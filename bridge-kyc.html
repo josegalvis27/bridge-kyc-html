@@ -2,16 +2,45 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Probar Deep Link</title>
+  <title>Redirigiendo a Cocopago...</title>
+  <script>
+    window.onload = function () {
+      // Intenta abrir la app automáticamente
+      window.location.href = "cocopago://bridge.kyc.completed/completed";
+
+      // Opcional: fallback por si no se abre después de 2 segundos
+      setTimeout(function () {
+        document.getElementById('manualLink').style.display = 'block';
+      }, 2000);
+    };
+  </script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    #manualLink {
+      display: none;
+      margin-top: 20px;
+    }
+    a.button {
+      font-size: 20px;
+      padding: 12px 24px;
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+  </style>
 </head>
-<body style="font-family: sans-serif; text-align: center; margin-top: 100px;">
-  <h1>Probar apertura de Cocopago</h1>
-  <p>
-    <a href="cocopago://bridge.kyc.completed/completed"
-       style="font-size: 20px; padding: 12px 24px; background-color: #000; color: #fff; text-decoration: none; border-radius: 6px;">
+<body>
+  <h1>Redirigiendo a Cocopago...</h1>
+  <p>Si no se abre automáticamente, haz clic aquí:</p>
+  <p id="manualLink">
+    <a href="cocopago://bridge.kyc.completed/completed" class="button">
       Abrir App Cocopago
     </a>
   </p>
-  <p>Si tienes la app instalada y configurada, se abrirá automáticamente.</p>
 </body>
 </html>
