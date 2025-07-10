@@ -1,32 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Volver a Coco Wallet</title>
 
   <script>
     window.onload = function () {
-      const alreadyUsed = sessionStorage.getItem("linkUsed");
-
-      if (alreadyUsed === "true") {
-        document.body.innerHTML = `
-          <h1>Este enlace ya fue usado</h1>
-          <p>Por seguridad, vuelve a la app y reinicia el proceso si es necesario.</p>
-        `;
-        return;
-      }
-
-      // Marcar como usado hasta que se cierre o recargue
-      sessionStorage.setItem("linkUsed", "true");
-
-      // Redirigir a la app
       window.location.href = "cocopago://bridge.kyc.completed/completed";
 
-      // Mostrar botón alternativo después de 2s
       setTimeout(function () {
-        const manualLink = document.getElementById('manualLink');
-        if (manualLink) manualLink.style.display = 'block';
+        document.getElementById('manualLink').style.display = 'block';
       }, 2000);
     };
   </script>
