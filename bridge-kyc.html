@@ -7,8 +7,23 @@
 
   <script>
     window.onload = function () {
+      const alreadyUsed = localStorage.getItem("linkUsed");
+
+      if (alreadyUsed === "true") {
+        document.body.innerHTML = `
+          <h1>Este enlace ya fue usado</h1>
+          <p>Por seguridad, vuelve a la app y reinicia el proceso si es necesario.</p>
+        `;
+        return;
+      }
+
+      // Marcamos como usado
+      localStorage.setItem("linkUsed", "true");
+
+      // Redirige a la app
       window.location.href = "cocopago://bridge.kyc.completed/completed";
 
+      // Muestra el botón después de 2 segundos
       setTimeout(function () {
         document.getElementById('manualLink').style.display = 'block';
       }, 2000);
